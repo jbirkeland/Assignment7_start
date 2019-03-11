@@ -20,7 +20,7 @@ var churchillSpeech = {
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
     donatePrompt;
 
-var ConsoleDisplay = document.getElementById("ConsoleDisplay");
+var ConsoleDisplay = document.getElementById('ConsoleDisplay');
 console.log(ConsoleDisplay);
 
 ConsoleDisplay.appendChild(BtnChurchill);
@@ -29,10 +29,32 @@ ConsoleDisplay.appendChild(BtnGhandi);
 
 ConsoleDisplay.appendChild(BtnDemosthenes);
 
-ConsoleDisplay.appendChild(BtnDonate);
+var SideNav = document.getElementById('SideNav');
+console.log(SideNav);
+
+SideNav.appendChild(BtnDonate);
+
+var bigDonation = document.getElementsByTagName('article');
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
+  var userDonate = window.prompt("How much would you like to donate?");
+  if(userDonate < 100) {
+    var newDonateTag = document.createElement('h3');
+    BtnDonate.appendChild(newDonateTag);
+    var newDonateText = document.createTextNode('Thank you for your donation of $' + userDonate);
+    newDonateTag.appendChild(newDonateText);
+  }else if(userDonate >= 100) {
+    var newDonateTag = document.createElement('h3');
+    BtnDonate.appendChild(newDonateTag);
+    var newDonateText = document.createTextNode('Thank you for your very generous donation');
+    newDonateTag.appendChild(newDonateText);
+    newDonateTag.classList.add('red');
+  }
+
+  for(var i = 0; i < bigDonation.length; i++){
+    bigDonation[i].classList.add('generous-donation');
+  };
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){

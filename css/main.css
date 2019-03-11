@@ -134,3 +134,8 @@ article.generous-donation h2 {
 #ConsoleDisplay p {
   display: none;
 }
+
+.red {
+  color: red;
+  background-color: white;
+}
